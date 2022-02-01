@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link href="src/style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Weather Page</h1>
+      <div class="row">
+        <div class="col-6">
+          <form id="search-form">
+            <input text="state" placeholder="Select your state" id="state-input"/>
+            <input text="city" placeholder="Select your city" id="city-input"/>
+            <input type="submit" class="btn" id="submit-text-input"/>
+          </form>
+        </div>
+      </div>
+
+
+
+      <h3 id="city"></h3>
+
+      <div class="float-left"></div>
+      <div class="temperature" id="temperature"></div>
+
+      <div class="card w-50">
+        <div class="card-body">
+          <h5 class="card-title" id="atlCard">Where do you live?</h5>
+          <p class="card-text" id="date">Monday 6:00 pm</p>
+        </div>
+      </div>
+
+
+      <div class="card w-75">
+        <div class="card-body">
+          <h5 class="card-title" id="prec">What is the Precipitation?</h5><div class="units"></div><a href="#" class="fahrenheit" id="fahrenheit-link">℉</a>
+          <span class="card-text" id="deg">What is the temperature?</span>
+          <span id="units"></span>
+        </div>
+      </div>
+
+      <br />
+      <br />
+      <br />
+
+
+      <button>Current Location</button>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      Tuesday
+      <br />
+      45℉
+      Scattered showers
+    </div>
+
+
+
+
+    <div class="col-sm">
+      Wednesday
+      <br />
+      53℉
+      <br />
+      Sunny
+    </div>
+    <div class="col-sm">
+      Thursday
+      <br />
+      56℉
+      <br />
+      Sunny
+    </div>
+    <div class="col-sm">
+      Friday
+      <br />
+      65℉
+      <br />
+      Partly cloudy
+  </div>
+  <div class="col-sm">
+    Saturday
+    <br />
+    64℉
+    <br />
+    Partly cloudy
+  </div>
+</div>
+</div>
+<script src="src/script.js" ></script>
+  </body>
+</html>
