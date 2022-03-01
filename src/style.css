@@ -2,7 +2,7 @@ body {
   padding: 0 20 px;
 }
 h1 {
-  color: slategray;
+  color: slateblue;
   text-align: center;
 }
 h2 {
@@ -74,4 +74,7 @@ form {
 #search-form {
   position: relative;
   top: 170px;
+}
+.container {
+  color: slateblue;
 }
