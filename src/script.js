@@ -35,6 +35,15 @@ function displayWeatherCondition(response) {
 
   //document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#prec").innerHTML = response.data.weather[0].main;
+
+  let apiKey = "3dddfbe83729356080a3ea5aecdb4bb5";
+  let apiUrlForecast = `https://api.openweathermap.org/data/2.5/onecall?lat=${response.data.coord.lat}&lon=${response.data.coord.lon}&appid=${apiKey}&units=metric`;
+  axios
+    .get(apiUrlForecast)
+    .then(displayWeatherForecast)
+    .catch((error) => {
+      alert("Invalid coord");
+    });
 }
 
 function search(event) {
@@ -48,6 +57,49 @@ function search(event) {
     .catch((error) => {
       alert("Invalid City");
     });
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+
+function displayWeatherForecast(response) {
+  let forecastContainer = document.querySelector("#forecast");
+  let forecastHTML = '<div class="row">';
+
+  response.data.daily.forEach(function (day, index) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="col-sm">
+            ${formatDay(day.dt)}
+            <br />
+             <img src="http://openweathermap.org/img/wn/${
+               day.weather[0].icon
+             }@2x.png" width="50"/>
+             <div>
+             ${day.temp.min}℃
+             ${day.temp.max}℃
+            </div><br />
+            ${day.weather[0].description}
+          </div>
+    `;
+  });
+  forecastHTML = forecastHTML + "</div>";
+
+  forecastContainer.innerHTML = forecastHTML;
 }
 
 let searchForm = document.querySelector("#search-form");
@@ -91,15 +143,7 @@ function getCurrentPosition(event) {
 let button = document.querySelector("button");
 button.addEventListener("click", getCurrentPosition);
 
-
-
-
-
-
-
-
-
-  function displayForecast() {
+function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun"];
@@ -129,18 +173,6 @@ button.addEventListener("click", getCurrentPosition);
   console.log(forecastHTML);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
@@ -156,3 +188,4 @@ function displayTemperature(response) {
   let iconElement = document.querySelector("#icon");
 
   displayForecast();
+}
